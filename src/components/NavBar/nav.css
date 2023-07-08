@@ -1,0 +1,40 @@
+.h1
+    {
+        color: rgb(127, 127, 223);
+        font-size: 3rem;  
+    }
+
+.navegacion
+    {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgb(204, 234, 179);
+    }
+
+.imagen
+    {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.botonDiv
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+.boton
+    {
+        margin: 25px;
+        width: 120px;
+        height: 50px;
+        font-size: 1rem;
+        border: transparent;
+        border-radius: 5px;
+        background-color: rgb(124, 194, 194);
+    }
