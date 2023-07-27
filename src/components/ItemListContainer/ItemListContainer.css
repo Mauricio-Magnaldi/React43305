@@ -1,4 +1,12 @@
-.h2
+.listContenedor 
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+.subtitulo
     {
         color:rgb(143, 81, 202);
         font-size: 2rem;  

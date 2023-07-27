@@ -1,20 +1,22 @@
-//import ButtonComponent from "../ButtonComponent/ButtonComponent";
-//<ButtonComponent colorFondo="yellow">Ver Producto</ButtonComponent>
-import './ItemCard.css';
+import './Item.css';
+import React from "react";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import { Link } from "react-router-dom";
 
 function Item(props) {
-        const {nombreProducto, descripcionProducto, precioProducto, imagenProducto, categoriaProducto, stockProducto } = props;
-
+        const {id, nombre, descripcion, precio, imagen, categoria, stock} = props;
         return (
-            <div>
-                <h2>{nombreProducto}</h2>
-                <p>{descripcionProducto}</p>
-                <img width="100" height="100" src={imagenProducto}></img>
-                <p>$ {precioProducto}</p>
-                <p>Categoría: {categoriaProducto}</p>
-                <p>Stock: {stockProducto}</p>
-                <button>Ver detalle</button>
-            </div>
+                <div className="tarjeta">
+                    <h2>{nombre}</h2>
+                    <img src={imagen} className="imagenDiv" alt="Imagen del Producto"></img>
+                    <p>{descripcion}</p>
+                    <p>$ {precio}</p>
+                    <p>Categoría: {categoria}</p>
+                    <p>Stock: {stock}</p>
+                    <Link to={`/producto/${id}`}>
+                        <ButtonComponent>Ver Producto</ButtonComponent>
+                    </Link> 
+                </div>
         );
     }
 

@@ -12,6 +12,16 @@
         background-color: rgb(204, 234, 179);
     }
 
+.ul 
+    {
+        list-style: none;
+    }
+
+.link
+    {
+        text-decoration: none;
+    }
+
 .imagen
     {
         width: 50px;

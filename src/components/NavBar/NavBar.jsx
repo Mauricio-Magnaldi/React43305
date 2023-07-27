@@ -1,38 +1,35 @@
-import "./nav.css";
+import "./NavBar.css";
 import logo from "./assets/logo.webp";
-import CartWidget from "../CartWidget/CartWidget.js";
 import { Link } from "react-router-dom";
 
-const NavBar = () => 
-    {
+export default function NavBar() { 
         return (
-//            <h1 className="h1">La Ferretería</h1>
             <div className="navegacion">
-            <img className="imagen" src={logo} alt="Logo ferreteria"></img>
                 <nav>
-                    <ul>
+                    <ul className="ul">
                         <li>
-                            <Link to="/" className="">Agua</Link>
+                            <Link><img className="imagen" src={logo} alt="Logo ferreteria"></img></Link>
                         </li>
                         <li>
-                            <Link to="/" className="">Herramienta</Link>
+                            <Link to="/categoria/Agua" className="link">Agua</Link>
                         </li>
                         <li>
-                            <Link to="/" className="">Electricidad</Link>
+                            <Link to="/categoria/Herramienta" className="link">Herramienta</Link>
                         </li>
                         <li>
-                            <Link to="/" className="">Gas</Link>
+                            <Link to="/categoria/Electricidad" className="link">Electricidad</Link>
                         </li>
                         <li>
-                            <Link to="/" className="">Pintura</Link>
+                            <Link to="/categoria/Gas" className="link">Gas</Link>
                         </li>
-
+                        <li>
+                            <Link to="/categoria/Pintura" className="link">Pintura</Link>
+                        </li>
+                    {/* CartWidget*/}
+                    <div>🛒</div>
                     </ul>
-                        <CartWidget />
-                    
                 </nav>
                 </div>
             );
     }
   
-export default NavBar;

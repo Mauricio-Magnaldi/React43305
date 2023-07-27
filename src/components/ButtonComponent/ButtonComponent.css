@@ -1,0 +1,8 @@
+.boton 
+    {
+        color: white;
+        background-color: rgb(97, 150, 220);
+        border-radius: 4px; 
+        margin: 5px;
+        cursor: pointer;
+    }
