@@ -1,6 +1,5 @@
 //import logo from './logo.svg';
 import './App.css';
-import React from 'react';
 import NavBar from '../src/components/NavBar/NavBar';
 //import CartWidget from './components/NavBar/CartWidget.js';
 import ItemListContainer from '../src/components/ItemListContainer/ItemListContainer';
@@ -14,6 +13,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //<Route path="/category/:id" element= {<ItemListContainer></ItemListContainer>}></Route>
 // Hacer que el El carrito debe ir a /cart <CartView></CartView></Route>
 // Hacer que el El carrito debe ir a /checkout <Checkout></Checkout>
+// Hacer eliminar un articulo del carrito mediante la creación de un array "nuevo" donde el viejo array ya no este
+
+
 
 function App() {
   return (
@@ -22,9 +24,7 @@ function App() {
         <NavBar></NavBar>
         <Routes>        
          <Route path="/" element= {<ItemListContainer greeting = {"Gracias por tu visita al Mayorista La Ferretería"}></ItemListContainer>}></Route>
-         
          <Route path="/categoria/:categoryId" element={<ItemListContainer></ItemListContainer>}></Route>
-
          <Route path="/producto/:id" element= {<ItemDetailContainer></ItemDetailContainer>}></Route>
          <Route path="*" element={<h1>Página no encontrada: 404</h1>}></Route>        
         </Routes>

@@ -7,7 +7,7 @@ const productos = [
     precio: 13982,
     imagen:
       "https://i.ibb.co/PwS7PwF/Grifo-monocomando.webp",
-    categoria: "Agua",
+    categoria: "agua",
     stock: 50,
   },
   {
@@ -16,7 +16,7 @@ const productos = [
     descripcion: "Tanque de almacenamiento de agua de 1000 litros.",
     precio: 61389.99,
     imagen: "https://i.ibb.co/0KPLBft/Tanque-de-agua.jpg",
-    categoria: "Agua",
+    categoria: "agua",
     stock: 20,
   },
   {
@@ -27,7 +27,7 @@ const productos = [
     precio: 137943.5,
     imagen:
       "https://i.ibb.co/7G9tVz9/Bomba-de-agua.webp",
-    categoria: "Agua",
+    categoria: "agua",
     stock: 15,
   },
   {
@@ -37,7 +37,7 @@ const productos = [
     precio: 3235.75,
     imagen:
       "https://i.ibb.co/R41vx9W/Ca-o-de-agua.webp",
-    categoria: "Agua",
+    categoria: "agua",
     stock: 30,
   },
   {
@@ -47,7 +47,7 @@ const productos = [
     precio: 2445.99,
     imagen:
       "https://i.ibb.co/p3Dvfzq/Filtro-de-agua.webp",
-    categoria: "Agua",
+    categoria: "agua",
     stock: 40,
   },
   {
@@ -57,7 +57,7 @@ const productos = [
     precio: 15934.52,
     imagen:
       "https://i.ibb.co/XDDbbbk/Cable-electrico.webp",
-    categoria: "Electricidad",
+    categoria: "electricidad",
     stock: 25,
   },
   {
@@ -67,7 +67,7 @@ const productos = [
     precio: 832.99,
     imagen:
       "https://i.ibb.co/PYG4zm8/Interruptor-de-luz.webp",
-    categoria: "Electricidad",
+    categoria: "electricidad",
     stock: 60,
   },
   {
@@ -77,7 +77,7 @@ const productos = [
     precio: 4222.25,
     imagen:
       "https://i.ibb.co/Q8JGv4T/Regulador-de-voltaje.webp",
-    categoria: "Electricidad",
+    categoria: "electricidad",
     stock: 10,
   },
   {
@@ -87,7 +87,7 @@ const productos = [
     precio: 1399.0,
     imagen:
       "https://i.ibb.co/L0HMhTt/Termocupla.webp",
-    categoria: "Gas",
+    categoria: "gas",
     stock: 5,
   },
   {
@@ -97,7 +97,7 @@ const productos = [
     precio: 1342.99,
     imagen:
       "https://i.ibb.co/cg5Qy1G/Manguera-para-gas.webp",
-    categoria: "Gas",
+    categoria: "gas",
     stock: 40,
   },
   {
@@ -107,7 +107,7 @@ const productos = [
     precio: 29432.75,
     imagen:
       "https://i.ibb.co/GF5K3hm/Pintura-acrilica-blanca.webp",
-    categoria: "Pintura",
+    categoria: "pintura",
     stock: 30,
   },
   {
@@ -117,7 +117,7 @@ const productos = [
     precio: 835.56,
     imagen:
       "https://i.ibb.co/KwKd8k0/Rodillo.webp",
-    categoria: "Pintura",
+    categoria: "pintura",
     stock: 50,
   },
   {
@@ -127,7 +127,7 @@ const productos = [
     precio: 656.99,
     imagen:
       "https://i.ibb.co/hRctyYy/Pintura-spray.webp",
-    categoria: "Pintura",
+    categoria: "pintura",
     stock: 20,
   },
   {
@@ -137,7 +137,7 @@ const productos = [
     precio: 486.25,
     imagen:
       "https://i.ibb.co/M9j8hLx/Brocha.webp",
-    categoria: "Pintura",
+    categoria: "pintura",
     stock: 40,
   },
   {
@@ -147,7 +147,7 @@ const productos = [
     precio: 3648.0,
     imagen:
       "https://i.ibb.co/GHK6TBc/Grifo-termostatico.webp",
-    categoria: "Agua",
+    categoria: "agua",
     stock: 15,
   },
   {
@@ -157,7 +157,7 @@ const productos = [
     precio: 55343.0,
     imagen:
       "https://i.ibb.co/VQLGmNr/Caldera-de-gas.webp",
-    categoria: "Gas",
+    categoria: "gas",
     stock: 8,
   },
   {
@@ -167,7 +167,7 @@ const productos = [
     precio: 799.43,
     imagen:
       "https://i.ibb.co/G9tNs9t/Enchufe.webp",
-    categoria: "Electricidad",
+    categoria: "electricidad",
     stock: 100,
   },
   {
@@ -177,7 +177,7 @@ const productos = [
     precio: 2457.5,
     imagen:
       "https://i.ibb.co/R9PPZdN/Llave-ajustable.webp",
-    categoria: "Herramienta",
+    categoria: "herramienta",
     stock: 35,
   },
   {
@@ -187,7 +187,7 @@ const productos = [
     precio: 28432.0,
     imagen:
       "https://i.ibb.co/C1QCxcp/Amoladora.webp",
-    categoria: "Herramienta",
+    categoria: "herramienta",
     stock: 25,
   },
   {
@@ -197,19 +197,18 @@ const productos = [
     precio: 1375.75,
     imagen:
       "https://i.ibb.co/8XhTnYK/Sellador-de-silicona.webp",
-    categoria: "Herramienta",
+    categoria: "herramienta",
     stock: 50,
   },
 ];
 
-
 function obtenerDato() {
     return new Promise ( ( resuelve, rechaza ) => {
       setTimeout(() => {
-            const fecha = new Date().toLocaleDateString;
+            const fecha = new Date().toLocaleDateString();
             resuelve(productos, fecha);
-        }, 2000)
-    })
+        }, 2000);
+    });
 }
 //En el mismo archivo se exporta más de una función, por ello una sola se escribe como export default
 export function obtenerDatoProducto(idURL) {

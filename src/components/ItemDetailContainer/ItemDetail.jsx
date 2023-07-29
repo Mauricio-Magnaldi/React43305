@@ -1,4 +1,7 @@
-        <>
+function ItemDetail() {
+    //Fragment <>
+    return (
+                <>
             <div>
                 <img src={producto.imagen}></img>     
             </div>
@@ -10,3 +13,7 @@
                 <span>{producto.descripcion}</span>
             </div>
         </>
+    );
+}
+
+export default ItemDetail;
