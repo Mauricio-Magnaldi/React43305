@@ -4,24 +4,12 @@ p {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.boton {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: solid 3px lightblue;
-  border-radius: 10px; 
-  cursor: pointer;
-}
-
-.masMenos {
-  width: 50px;
-  height: 50px;
-}
+.boton 
+    {
+        color: black;
+        background-color: rgb(204, 234, 179);
+        border-radius: 4px; 
+        margin: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }

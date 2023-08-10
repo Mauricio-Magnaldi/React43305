@@ -37,3 +37,24 @@
     transform: rotate(360deg);
   }
 }
+
+.contenedorTarjeta { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+.alineado 
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+.botonAgregar {
+      margin-left: 50px;
+      cursor: pointer;
+    }
+
+  

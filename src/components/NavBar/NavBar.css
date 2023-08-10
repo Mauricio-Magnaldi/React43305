@@ -4,26 +4,24 @@
         font-size: 3rem;  
     }
 
-.navegacion
+.navUl 
     {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        list-style: none;
         background-color: rgb(204, 234, 179);
     }
 
-.ul 
-    {
-        list-style: none;
-    }
-
-.link
+.navUlLilink
     {
         text-decoration: none;
     }
 
 .imagen
     {
+        margin-top: 10px;
+        margin-bottom: 10px;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -40,8 +38,8 @@
 
 .boton
     {
-        margin: 25px;
-        width: 120px;
+        margin: 20px;
+        width: 100px;
         height: 50px;
         font-size: 1rem;
         border: transparent;

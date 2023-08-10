@@ -1,67 +1,53 @@
 import React from 'react';
 import { useState } from 'react';
 import './ItemCount.css';
+//import ButtonComponent from '../ButtonComponent/ButtonComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-let stock = 5;
+function ItemCount ({stock, onAddToCart}) {
+  const [clickContador, setClickContador] = useState(1);
 
-const ItemCount = ({}) => {
-  console.log("Stock inicial: ",stock);
-  const [clicks, setClicks] = useState(0);
-  const [botonHabilitado, setBotonHabilitado] = useState(false);
-  
-  const subtractStock = () => {
-    stock = stock - 1;
-    console.log(stock);
-  };
-
-  const addStock = () => {
-    stock = stock + 1;
-    console.log(stock);
-  };
-
-  function handleClickAdd() {
-    if (stock > 0) {
-      setClicks(clicks + 1);
-      subtractStock(stock);
-      setBotonHabilitado(true);
-    } else {
-      alert('Stock en: ' + stock);
+  function manejadorSumar() {
+    if (clickContador === stock) {}
+    else {
+      setClickContador(clickContador + 1);
     }
   }
 
-  function handleClickSubtract() {
-    if (clicks > 0) {
-      setClicks(clicks - 1);
-      addStock();
-      if (clicks === 1) {
-        setBotonHabilitado(false);
-      }
-    } else {
-    }
+  function manejadorRestar() {
+    if (clickContador > 1) {
+      setClickContador(clickContador - 1);
+    } 
   }
 
+  /*
   const agregarCarrito = () => {
-    alert('Item en el carrito: ' + clicks);
+    alert('Item en el carrito: ' + clickContador);
   };
+*/
 
   return (
-    <div className="div">
-      <h2>Stock: {stock}</h2>
+    <div>
       <div className="div">
-          <button className="boton masMenos">
-            <h2 onClick={handleClickAdd}>+</h2></button>
-            <h2>{clicks}</h2>
-            <button className="boton masMenos">
-            <h2 onClick={handleClickSubtract}>-</h2>
-           </button>
+        <div>
+        <button className="boton">
+          <h2 onClick={manejadorSumar}><abbr title="Suma"><FontAwesomeIcon icon={faArrowUp} fade></FontAwesomeIcon></abbr></h2>
+        </button>
+        </div>
+        <div>
+        <h2>{clickContador}</h2>
+        </div>
+        <div>
+        <button className="boton">
+          <h2 onClick={manejadorRestar}><abbr title="Resta"><FontAwesomeIcon icon={faArrowDown} fade></FontAwesomeIcon></abbr></h2>
+        </button>
+        </div>          
       </div>
       <div>
-          <button
-            disabled={!botonHabilitado}
-            className="boton"
-            onClick={agregarCarrito}
-          >
-            <h4>Agregar al carrito</h4>
+          <button className="boton" onClick={ () => onAddToCart(clickContador)}>
+            <p>Agregar al carrito</p>
           </button>
       </div>
     </div>

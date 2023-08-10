@@ -1,8 +1,13 @@
 .boton 
     {
-        color: white;
-        background-color: rgb(97, 150, 220);
+        color: black;
+        background-color: rgb(204, 234, 179);
         border-radius: 4px; 
         margin: 5px;
         cursor: pointer;
+        text-decoration: none;
     }
+
+.ancho {
+    width: 10px;
+}
