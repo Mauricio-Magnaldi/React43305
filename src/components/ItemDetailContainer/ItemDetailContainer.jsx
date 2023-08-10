@@ -15,7 +15,7 @@ function ItemDetailContainer() {
     const [estaCargando, setEstaCargando] = useState(true);
 //    const [estaAgregadoAlCarrito, setEstaAgregadoAlCarrito] = useState(false);  
     const { id } = useParams();
-    const { carro } = useContext(cartContext); 
+    const { agregarAlCarro } = useContext(cartContext); 
  //   const itemEnCarrito = obtenerItemEnCarrito(id);
   //  const maxItems = itemEnCarrito ? producto.stock - itemEnCarrito.count : producto.stock;
 
@@ -34,7 +34,8 @@ function ItemDetailContainer() {
     }, [id]);
 
 function manejadorAgregarAlCarrito(clickContador) { 
-  alert(`Agregaste ${clickContador} de ${producto.nombre} al carrito.`);  
+  agregarAlCarro(producto, clickContador);
+  alert(`Agregaste ${clickContador} unidades de ${producto.nombre} al carrito.`);  
 } 
 
 if (estaCargando) {
