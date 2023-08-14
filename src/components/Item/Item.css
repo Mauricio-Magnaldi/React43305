@@ -1,28 +1,31 @@
 .tarjeta{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   border-radius: 20px;
-    border: 3px solid rgb(204, 234, 179);
+  border: 3px solid rgb(204, 234, 179);
   width: 300px;
   height: 350px;
   margin-top: 10px;
+  transition: transform 0.3s ease;
 }
 
-  .divImagen{
+.tarjeta:hover {
+  transform: scale(1.1);
+}
+
+.tarjeta.tarjetaBloqueada {
+  background-color: rgb(189, 188, 188);
+}
+
+.divImagen {
     width: 320px;
     height: 260px;
   }
 
-  .divImagen img{
+.divImagen img {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
   }
-
-.tarjeta.tarjetaBloqueada {
-  background-color:dimgray;
-  color:gray;
-}
-

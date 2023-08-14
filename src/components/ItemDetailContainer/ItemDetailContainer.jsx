@@ -1,41 +1,44 @@
 import { useState, useEffect, useContext } from "react";
-import { getProductData } from "../../services/firebase";
+import { obtenerDatoProducto } from "../../services/firebase";
 import { useParams, Link } from "react-router-dom";
 import ItemDetail from "../ItemDetailContainer/ItemDetail";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import ItemCount from "../ItemCount/ItemCount";
 import LoaderComponent from "../LoaderComponent/LoaderComponent";
-import { cartContext } from "../../App";
-//import { CartContextProvider } from "../../context/cartContext";
-
-
+import { cartContext } from "../../context/cartContext";
 
 function ItemDetailContainer() {
     const [producto, setProducto] = useState({});
     const [estaCargando, setEstaCargando] = useState(true);
-//    const [estaAgregadoAlCarrito, setEstaAgregadoAlCarrito] = useState(false);  
+    const [estaAgregadoAlCarro, setEstaAgregadoAlCarro] = useState(false);  
     const { id } = useParams();
-    const { agregarAlCarro } = useContext(cartContext); 
- //   const itemEnCarrito = obtenerItemEnCarrito(id);
-  //  const maxItems = itemEnCarrito ? producto.stock - itemEnCarrito.count : producto.stock;
+    const { agregarAlCarro, obtenerProductoEnCarro } = useContext(cartContext); 
+    const productoEnElCarro = obtenerProductoEnCarro(id);
+    const stockDisponible = productoEnElCarro ? producto.stock - productoEnElCarro.clickContador : producto.stock;  
+    const [errorProductoNoEcontrado, setErrorProductoNoEcontrado] = useState(null);
 
     useEffect(() => {
 
-//  La función async requierProducto sabía estar fuera del useEfect
-//Utilizar el componente loadinComponente para que se muestra la reuda clase 29/7 1:00 hs. para evitar que aparezcan campos vacios. se mu
       setEstaCargando(true);
       async function requiereProducto() {
-        const respuesta = await getProductData(id);
-        setProducto(respuesta);
-        setEstaCargando(false); 
+        try {
+          const respuesta = await obtenerDatoProducto(id);
+          setProducto(respuesta);
+          setEstaCargando(false);  
+        } catch (error) {
+            setErrorProductoNoEcontrado(error.message);
+            setEstaCargando(false);
+          } finally {
+            setEstaCargando(false);
+          }
     }
 
         requiereProducto();
     }, [id]);
 
-function manejadorAgregarAlCarrito(clickContador) { 
-  agregarAlCarro(producto, clickContador);
-  alert(`Agregaste ${clickContador} unidades de ${producto.nombre} al carrito.`);  
+function manejadorAgregarAlCarro(clickContador) { 
+  agregarAlCarro(producto, clickContador);  
+  setEstaAgregadoAlCarro(true);
 } 
 
 if (estaCargando) {
@@ -44,10 +47,24 @@ if (estaCargando) {
      );
  }
 
-    return (
+if (errorProductoNoEcontrado) 
+  return (
+  <h1>{errorProductoNoEcontrado}</h1>
+  );
+ 
+return (
       <div>
-        {<ItemDetail producto={producto}></ItemDetail>}
-        <ItemCount onAddToCart={manejadorAgregarAlCarrito} stock={producto.stock}></ItemCount>
+
+          {<ItemDetail producto={producto}></ItemDetail>}
+        {
+          estaAgregadoAlCarro ? <Link to="/carro"><ButtonComponent>Ir al Carro</ButtonComponent></Link> :
+           <ItemCount stock={stockDisponible} onConfirm={manejadorAgregarAlCarro}></ItemCount>      
+        }
+        {
+        productoEnElCarro && ( 
+          <h3>{productoEnElCarro.clickContador} unidades agregadas al carro. Alcanzado el stock disponible no se podrán agregar más.</h3> 
+        )
+        }       
         <div className="contenedorTarjeta">
           <Link to="/">
             <ButtonComponent>Volver</ButtonComponent>

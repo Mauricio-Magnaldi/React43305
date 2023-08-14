@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 //import obtenerDato, { obtenerDatoCategoria }  from "../../services/asyncMock";
-import { getData, getCategoryData} from "../../services/firebase";
+import { obtenerDato, obtenerDatoCategoria} from "../../services/firebase";
 import ItemList from "../ItemList/ItemList";
 //import Item from "../Item/Item";
 import './ItemListContainer.css';
@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import LoaderComponent from "../LoaderComponent/LoaderComponent";
 
 function ItemListContainer ({greeting})  {
+//    const [productos, setProductos] = useState(null); se puede inicializar asi 29-7 1:06
     const [productos, setProductos] = useState([]);
     const [estaCargando, setEstaCargando] = useState(true);
     const { categoryId } = useParams();
@@ -15,7 +16,7 @@ function ItemListContainer ({greeting})  {
     useEffect(() => {
         setEstaCargando(true);
         async function requiereProductos() {
-            let respuesta =  categoryId ? await getCategoryData(categoryId) : await getData();
+            let respuesta =  categoryId ? await obtenerDatoCategoria(categoryId) : await obtenerDato();
             setProductos(respuesta);
             setEstaCargando(false);
             }
@@ -38,7 +39,7 @@ return (
                                     <ItemList productos={productos}></ItemList>         
                             </div>
                         :
-                            <h2>No hay producto para mostrar.</h2>
+                            <h1>Categoría seleccionada no encontrada.</h1>
                 }
             </div>
         );

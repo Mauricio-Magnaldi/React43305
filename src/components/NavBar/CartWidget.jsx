@@ -1,13 +1,20 @@
+import "./CartWidget.css";
 import { useContext } from "react";
-import { cartContext } from "../../App";
+import { cartContext } from "../../context/cartContext";
+import { Link } from "react-router-dom";
 
 function CartWidget() {
   const context = useContext(cartContext);
-    return (
-      <div>
-        🛒
-        <span>{context.obtenerTotalItemsEnElCarro()}</span>
-      </div>
+  const quitaLinea = { textDecoration: "none" };
+
+  return (
+      <Link style={quitaLinea} to="/carro">
+        <div>
+          {
+            context.obtenerTotalProductosEnElCarro() ===0 ? "" : <div className="orden"><div>🛒</div><span>{context.obtenerTotalProductosEnElCarro()}</span></div>
+          }
+        </div>
+      </Link>
     );
 }
 

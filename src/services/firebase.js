@@ -9,9 +9,7 @@ import {
   getDoc,
   where,
   query,
-//  addDoc,
-//  setDoc,
-//  writeBatch
+  addDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -27,7 +25,7 @@ const firebaseConfig = {
 const appFirebase = initializeApp(firebaseConfig);
 const db = getFirestore(appFirebase);
 
-async function getData() {
+async function obtenerDato() {
 const productosRef = collection(db, "productos");
 const documentsSnapshot = await getDocs(productosRef);
 const documents = documentsSnapshot.docs;
@@ -36,17 +34,17 @@ const docsData = documents.map((item) => { return { ...item.data(), id: item.id}
   return docsData;
 }
 
-async function getProductData(id) {
+async function obtenerDatoProducto(id) {
   const docRef = doc(db, "productos", id);
   const docSnapshot = await getDoc(docRef);
   if (docSnapshot.exists()) {
     return { ...docSnapshot.data(), id: docSnapshot.id };
   } else {
-    throw new Error("No encontramos ese producto.");
+    throw new Error("No se encontró el producto.");
   }
 }
 
-async function getCategoryData(categoryURL) {
+async function obtenerDatoCategoria(categoryURL) {
   const productosRef = collection(db, "productos");
   const q = query(productosRef, where("categoria","==",categoryURL));
   const documentsSnapshot = await getDocs(q);
@@ -54,27 +52,22 @@ async function getCategoryData(categoryURL) {
   return documents.map((item) => ({ ...item.data(), id: item.id }));
 }
 
-
-
-/*
-
-async function createOrder(orderData) {
-  const collectionRef = collection(db, "orders");
+async function crearOrden(orderData) {
+  const collectionRef = collection(db, "ordenes");
   const docCreated = await addDoc(collectionRef, orderData);
   return(docCreated.id);
 }
-*/
 
-/*
-async function getOrder(id) {
-  const docRef = doc(db, "orders", id);
-  const docSnapshot = await addDoc(docRef);
-  if(docSnapshot.exists()) {
-    return { ...docSnapshot.data(), id: docSnapshot.id};
-}
-}
-*/
+async function obtenerOrden(id) {
+  const docRef = doc(db, "ordenes", id);
+  const docSnapshot = await getDoc(docRef);
+
+  if (docSnapshot.exists()) {
+    return { ...docSnapshot.data(), id: docSnapshot.id };
+  } else {
+    throw new Error("No se encuentra ese producto.");
+    }
+  }
 
 
-// export { getData, getProductData, getCategoryData, createOrder };
-export { getData, getProductData, getCategoryData};
+export { obtenerDato, obtenerOrden, obtenerDatoProducto, obtenerDatoCategoria, crearOrden};
