@@ -1,20 +1,19 @@
-import React from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";
 import { crearOrden } from "../../services/firebase";
 import { cartContext } from "../../context/cartContext";
 
 function Checkout() {
-  const {carro, obtenerPrecioTotalEnCarro, vaciarCarro} = useContext(cartContext);  
   const [buyer, setBuyer] = useState({
         firstName: "",
-        lastName: "",
-        age: "",
+        email: "",
+        phone: "",
       });
-    
-    
-    async function manejadorCheckout() {
+
+    const navigate = useNavigate();
+    const {carro, obtenerPrecioTotalEnCarro, vaciarCarro} = useContext(cartContext);
+    async function manejadorCheckout(evt) {
+        evt.preventDefault();
         const orderData = {
             items: carro,
             buyer: buyer,
@@ -24,25 +23,13 @@ function Checkout() {
 
     try {
     const idOrder = await crearOrden(orderData);
-    const notificacion = toast.info(
-        <div>
-            {`Atención. Información importante. Copia el siguiente código de tu orden de compra localhost:3000/order-confirmation/${idOrder} para que lo utilices en caso de necesidad. Gracias por tu compra.`}
-        <button onClick={() => toast.dismiss()}>Cerrar</button>
-        </div>,
-        {
-            autoClose: false
-        }
-    )
+    navigate(`/order-confirmation/${idOrder}`);
     vaciarCarro();
     } 
-    catch (e) {
-        const mensaje = `No se pudo realizar la compra debido al siguiente error ${e}`;
-        toast.error(mensaje, {
-            position: 'top-center',
-            autoClose: 3000, 
-            closeOnClick: true,
-        });
+    catch (error) {
+        
     }
+  }
 
     function onInputChange(evt) {
         const value = evt.target.value;
@@ -56,14 +43,14 @@ function Checkout() {
         e.preventDefault();
         setBuyer({
           firstName: "",
-          lastName: "",
-          age: "",
+          email: "",
+          phone: "",
         });
       }
     
     return (
         <form>
-        <h2>Completa tus datos para completar la compra🛍</h2>
+        <h2>Completa tus datos para completar la compra.</h2>
   
         <div style={{ display: "flex", marginBottom: 8 }}>
           <label htmlFor="firstName" style={{ width: "100px", marginRight: 4 }}>
@@ -78,38 +65,39 @@ function Checkout() {
         </div>
   
         <div style={{ display: "flex", marginBottom: 8 }}>
-          <label htmlFor="lastName" style={{ width: "100px", marginRight: 4 }}>
-            Apellido
+          <label htmlFor="email" style={{ width: "100px", marginRight: 4 }}>
+            Email
           </label>
           <input
             value={buyer.lastName}
-            name="lastName"
-            type="text"
+            name="email"
+            type="email"
             onChange={onInputChange}
           />
         </div>
   
         <div style={{ display: "flex", marginBottom: 8 }}>
-          <label style={{ width: "100px", marginRight: 4 }}>Edad</label>
+          <label style={{ width: "100px", marginRight: 4 }}>Telefono</label>
           <input
             value={buyer.age}
-            name="age"
+            name="phone"
             type="number"
             onChange={onInputChange}
           />
         </div>
-  
-        <button
+        <div className="alineacionHorizontal">
+        <button className="boton"
           disabled={
-            !(buyer.firstName !== "" && buyer.lastName !== "" && buyer.age !== "")
+            !(buyer.firstName !== "" && buyer.email !== "" && buyer.phone !== "")
           }
           onClick={manejadorCheckout}
         >
-          Confirmar Compra
+          Confirmar
         </button>
-        <button onClick={resetForm}>Cancelar</button>
+        <button onClick={resetForm} className="boton">Cancelar</button>
+        </div>
       </form>
     );   
-}}
+}
 
 export default Checkout;

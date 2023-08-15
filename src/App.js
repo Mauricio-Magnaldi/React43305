@@ -4,9 +4,9 @@ import ItemListContainer from '../src/components/ItemListContainer/ItemListConta
 import ItemDetailContainer from '../src/components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartContextProvider } from './context/cartContext';
-import CartContainer from './components/CartContainer/CartContainer';
-import OrderConfirm from './components/OrderConfirm/OrderConfirm';
-import Checkout from './components/Checkout/Checkout';
+import CartContainer from "../src/components/CartContainer/CartContainer";
+import OrderConfirm from "../src/components/OrderConfirm/OrderConfirm";
+import Checkout from "../src/components/Checkout/Checkout";
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
               <Route path="/categoria/:categoryId" element={<ItemListContainer></ItemListContainer>}></Route>
               <Route path="/producto/:id" element= {<ItemDetailContainer></ItemDetailContainer>}></Route>
               <Route path="/carro" element={<CartContainer></CartContainer>}></Route>
-              <Route path="/checkout" element={<OrderConfirm></OrderConfirm>}></Route>
-              <Route path="/order-confirmation/:id" element={<Checkout></Checkout>}></Route>
+              <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+              <Route path="/order-confirmation/:id" element={<OrderConfirm></OrderConfirm>}></Route>
               <Route path="*" element={<h1>Página no encontrada: 404</h1>}></Route>        
             </Routes>
           </BrowserRouter>

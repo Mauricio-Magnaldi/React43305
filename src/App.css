@@ -44,13 +44,12 @@
     justify-content: space-around;
   }
 
-.alineado 
-    {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
+.alineacionHorizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 .botonAgregar {
       margin-left: 50px;
@@ -58,3 +57,12 @@
     }
 
   
+.boton 
+{
+    color: black;
+    background-color: rgb(204, 234, 179);
+    border-radius: 4px; 
+    margin: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}

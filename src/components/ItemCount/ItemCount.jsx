@@ -7,7 +7,7 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 function ItemCount ({stock, onConfirm}) {
   const [clickContador, setClickContador] = useState(1);
-   
+
   function manejadorSumar() {
     if (clickContador === stock) {}
     else {
@@ -49,7 +49,7 @@ function ItemCount ({stock, onConfirm}) {
       </div>
       <div>
       {          
-        stock === 0 ? "" : <button className="boton" onClick= { () => { onConfirm(clickContador)}}> 
+        stock === 0 ? "" : <button className="boton" onClick={ () => { onConfirm(clickContador)}}> 
             Agregar al carro
           </button>
         }

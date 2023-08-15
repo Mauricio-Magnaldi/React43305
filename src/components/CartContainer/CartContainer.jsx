@@ -46,8 +46,8 @@ function CartContainer() {
                     </tr>
                     ))}
                     </tbody>
-                    <td className='bordeFila' colSpan={9}><p>Total del carro: ${(obtenerPrecioTotalEnCarro()).toFixed(2)}.-</p></td>
-                    <tr><th className="borde" colSpan={9}><Link to="/checkout" className='boton'>Comprar</Link></th></tr>
+                    <td className='bordeFila' colSpan={9}><p>Total del carro: ${(obtenerPrecioTotalEnCarro()).toFixed(2)}.-</p></td>                    
+                    <tr><th className="borde" colSpan={9}><Link to="/checkout"><button className="boton">Comprar</button></Link></th></tr>
                     </table>               
                     </div>
              }    
